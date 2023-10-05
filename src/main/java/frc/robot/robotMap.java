@@ -6,6 +6,6 @@ public class robotMap {
         public static final int L_MotorPort2 = 2;
         public static final int R_MotorPort1 = 3;
         public static final int R_MotorPort2 = 4;
-        public static final int NeoMotorIntake =3;
+        public static final int NeoMotorIntake =5;
     }
 }

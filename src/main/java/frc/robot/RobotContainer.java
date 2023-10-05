@@ -6,7 +6,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.Autos;
 import frc.robot.commands.DriveJoystickCmd;
 import frc.robot.commands.ArmCmd;
 import frc.robot.subsystems.CIMMotorSubSystem;
@@ -40,6 +44,7 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        return null;
+        return new SequentialCommandGroup(
+                new ParallelRaceGroup(new Autos(CIMSubsystem), new WaitCommand(1)));
     }
 }
