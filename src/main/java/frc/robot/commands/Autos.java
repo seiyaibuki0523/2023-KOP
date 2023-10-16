@@ -1,18 +1,20 @@
 package frc.robot.commands;
 
-import frc.robot.subsystems.CIMMotorSubSystem;
-import frc.robot.subsystems.CIMMotorSubSystem;
+import frc.robot.subsystems.ChassisSubsystem;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class Autos extends CommandBase {
 
-    private final CIMMotorSubSystem AutoSubsystem;
+    private final ChassisSubsystem AutoSubsystem;
 
-    public Autos(CIMMotorSubSystem subsystem){
+    public Autos(ChassisSubsystem subsystem){
         AutoSubsystem = subsystem;
         addRequirements(AutoSubsystem);
     }
+
+    @Override
+    public void initialize() {}
 
     @Override
     public void execute() {

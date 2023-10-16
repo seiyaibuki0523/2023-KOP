@@ -21,7 +21,7 @@ public class NEOMotorModule {
 
     }
     public void setDesiredState(Double speed){
-        this.speed_input = speed * Constants.DriveConstants.kSpeed;
+        this.speed_input = speed * Constants.Drive.SPEED_COEFFICIENT;
         Motor.set(this.speed_input);
         SmartDashboard.putNumber("Speed: ",this.speed_input);
 

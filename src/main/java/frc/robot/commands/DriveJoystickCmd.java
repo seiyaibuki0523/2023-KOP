@@ -2,13 +2,13 @@ package frc.robot.commands;
 
 import java.util.function.Supplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.CIMMotorSubSystem;
+import frc.robot.subsystems.ChassisSubsystem;
 
 
 public class DriveJoystickCmd extends CommandBase{
-    private final CIMMotorSubSystem MotorSubsystem;
+    private final ChassisSubsystem MotorSubsystem;
     private final Supplier<Double> turnFunction, speedFunction;
-    public DriveJoystickCmd(CIMMotorSubSystem subsystem, Supplier<Double> turnFunction, Supplier<Double> speedFunction) {
+    public DriveJoystickCmd(ChassisSubsystem subsystem, Supplier<Double> turnFunction, Supplier<Double> speedFunction) {
         this.MotorSubsystem = subsystem;
         this.turnFunction = turnFunction;
         this.speedFunction = speedFunction;

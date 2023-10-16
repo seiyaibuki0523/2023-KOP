@@ -5,21 +5,18 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
+import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveJoystickCmd;
 import frc.robot.commands.ArmCmd;
-import frc.robot.subsystems.CIMMotorSubSystem;
+import frc.robot.subsystems.ChassisSubsystem;
 import frc.robot.commands.IntakeCmd;
 import frc.robot.subsystems.NEOMotorSubsysteam;
 
 public class RobotContainer {
     // The robot's subsystems and commands are defined here...
-    private final CIMMotorSubSystem CIMSubsystem = new CIMMotorSubSystem();
+    private final ChassisSubsystem CIMSubsystem = new ChassisSubsystem();
     private final NEOMotorSubsysteam NEOSubsysteam = new NEOMotorSubsysteam();
 
     //** Replace with CommandPS4Controller or CommandJoystick if neede
@@ -36,15 +33,25 @@ public class RobotContainer {
     }
 
     private void configureBindings() {
-        new Trigger(this.driverJoystick2::getXButtonPressed).whileTrue(new IntakeCmd(NEOSubsysteam,1.0));
-        new Trigger(this.driverJoystick2::getBButtonPressed).whileTrue(new IntakeCmd(NEOSubsysteam,-1.0));
-        new Trigger(this.driverJoystick2::getYButtonPressed).whileTrue(new ArmCmd(NEOSubsysteam,0.8));
-        new Trigger(this.driverJoystick2::getAButtonPressed).whileTrue(new ArmCmd(NEOSubsysteam,-0.8));
+        new Trigger(this.driverJoystick2::getXButtonPressed).whileTrue(new IntakeCmd(NEOSubsysteam, 1.0));
+        new Trigger(this.driverJoystick2::getBButtonPressed).whileTrue(new IntakeCmd(NEOSubsysteam, -1.0));
+        new Trigger(this.driverJoystick2::getYButtonPressed).whileTrue(new ArmCmd(NEOSubsysteam, 0.8));
+        new Trigger(this.driverJoystick2::getAButtonPressed).whileTrue(new ArmCmd(NEOSubsysteam, -0.8));
 
     }
 
     public Command getAutonomousCommand() {
         return new SequentialCommandGroup(
-                new ParallelRaceGroup(new Autos(CIMSubsystem), new WaitCommand(1)));
+                new ParallelRaceGroup(
+                        Commands.runEnd(() -> this.CIMSubsystem.move(0.6, 0.6), this.CIMSubsystem::stopModules, this.CIMSubsystem),
+                        new WaitCommand(1)
+                ),
+
+                new WaitCommand(1.0),
+
+                new ParallelRaceGroup(
+
+                )
+        );
     }
 }

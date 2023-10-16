@@ -2,8 +2,7 @@ package frc.robot.subsystems;
 
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.robotMap;
-import frc.robot.subsystems.NEOMotorModule;
+import frc.robot.RobotMap;
 
 
 public class NEOMotorSubsysteam extends SubsystemBase {
@@ -12,8 +11,8 @@ public class NEOMotorSubsysteam extends SubsystemBase {
     private static NEOMotorModule NEOMotorArm;
 
     public NEOMotorSubsysteam() {
-        NEOMotorIntake = new NEOMotorModule(robotMap.DrivePort.NeoMotorIntake,false);
-        NEOMotorArm = new NEOMotorModule(robotMap.DrivePort.NeoMotorIntake,false);
+        NEOMotorIntake = new NEOMotorModule(RobotMap.DrivePort.INTAKE_MOTOR,false);
+        NEOMotorArm = new NEOMotorModule(RobotMap.DrivePort.INTAKE_MOTOR,false);
     }
     public void intakeMove(Double speed) {
         NEOMotorIntake.setDesiredState(speed);
