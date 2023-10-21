@@ -1,10 +1,11 @@
 package frc.robot.subsystems;
 
-import frc.robot.Constants;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Constants;
+
 public class NEOMotorModule {
     private CANSparkMax Motor;
     private double speed_input;
@@ -20,14 +21,16 @@ public class NEOMotorModule {
         Motor.setInverted(reverse);
 
     }
-    public void setDesiredState(Double speed){
+
+    public void setDesiredState(Double speed) {
         this.speed_input = speed * Constants.Drive.SPEED_COEFFICIENT;
         Motor.set(this.speed_input);
-        SmartDashboard.putNumber("Speed: ",this.speed_input);
+        SmartDashboard.putNumber("Speed: ", this.speed_input);
 
     }
-public void stop() {
+
+    public void stop() {
         Motor.set(0);
-}
+    }
 }
 

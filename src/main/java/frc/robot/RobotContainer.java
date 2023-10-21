@@ -7,12 +7,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.Autos;
-import frc.robot.commands.DriveJoystickCmd;
 import frc.robot.commands.ArmCmd;
-import frc.robot.subsystems.ChassisSubsystem;
+import frc.robot.commands.DriveJoystickCmd;
 import frc.robot.commands.IntakeCmd;
+import frc.robot.subsystems.ChassisSubsystem;
 import frc.robot.subsystems.NEOMotorSubsysteam;
+import frc.robot.commands.ControlCmd;
 
 public class RobotContainer {
     // The robot's subsystems and commands are defined here...
@@ -22,7 +22,7 @@ public class RobotContainer {
     //** Replace with CommandPS4Controller or CommandJoystick if neede
     private final GamepadJoystick driverJoystick1 = new GamepadJoystick(0);
     private final GamepadJoystick driverJoystick2 = new GamepadJoystick(1);
-
+    private final ControlCmd controlCmd = new ControlCmd();
 
     public RobotContainer() {
         // Configure the trigger bindings
@@ -33,10 +33,12 @@ public class RobotContainer {
     }
 
     private void configureBindings() {
-        new Trigger(this.driverJoystick2::getXButtonPressed).whileTrue(new IntakeCmd(NEOSubsysteam, 1.0));
-        new Trigger(this.driverJoystick2::getBButtonPressed).whileTrue(new IntakeCmd(NEOSubsysteam, -1.0));
-        new Trigger(this.driverJoystick2::getYButtonPressed).whileTrue(new ArmCmd(NEOSubsysteam, 0.8));
-        new Trigger(this.driverJoystick2::getAButtonPressed).whileTrue(new ArmCmd(NEOSubsysteam, -0.8));
+        new Trigger(this.driverJoystick2::getRightBumper).whileTrue(controlCmd.NeoQuadrupleRod(0.5));
+        new Trigger(this.driverJoystick2::getLeftBumper).whileTrue(controlCmd.NeoQuadrupleRod(-0.5));
+        new Trigger(this.driverJoystick2::getXButtonPressed).whileTrue(controlCmd.NeoIntake(0.5));
+        new Trigger(this.driverJoystick2::getBButtonPressed).whileTrue(controlCmd.NeoIntake(-0.5));
+        new Trigger(this.driverJoystick2::getYButtonPressed).whileTrue(controlCmd.NeoElevator(0.5));
+        new Trigger(this.driverJoystick2::getAButtonPressed).whileTrue(controlCmd.NeoElevator(-0.5));
 
     }
 
@@ -48,7 +50,6 @@ public class RobotContainer {
                 ),
 
                 new WaitCommand(1.0),
-
                 new ParallelRaceGroup(
 
                 )

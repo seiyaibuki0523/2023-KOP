@@ -25,6 +25,10 @@ public class ChassisSubsystem extends SubsystemBase {
         this.leftMotorGroup.setDesiredState(leftSpeed);
         this.rightMotorGroup.setDesiredState(rightSpeed);
     }
+    public void autoMove(double seconds,double leftSpeed, double rightSpeed) {
+        this.leftMotorGroup.setDesiredState(seconds*leftSpeed);
+        this.rightMotorGroup.setDesiredState(seconds*rightSpeed);
+    }
 
     public void stopModules() {
         this.leftMotorGroup.stop();

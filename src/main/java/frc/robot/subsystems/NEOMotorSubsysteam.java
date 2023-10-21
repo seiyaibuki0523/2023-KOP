@@ -29,25 +29,7 @@ public class NEOMotorSubsysteam extends SubsystemBase {
         this.NEOMotorArm.setDesiredState(speed);
     }
 
-    public void NeoQuadrupleRodAhead(){
-        this.neoMotorQuadrupleRodA.setDesiredState(0.5);
-        this.neoMotorQuadrupleRodB.setDesiredState(0.5);
-    }
 
-    public void NeoQuadrupleRodBack(){
-        this.neoMotorQuadrupleRodA.setDesiredState(-e0.5);
-        this.neoMotorQuadrupleRodB.setDesiredState(-0.5);
-    }
-
-    public void NeoElevatorUp(){
-        this.neoMotorElevatorA.setDesiredState(0.5);
-        this.neoMotorElevatorB.setDesiredState(0.5);
-    }
-
-    public void NeoElevatorDown(){
-        this.neoMotorElevatorA.setDesiredState(-0.5);
-        this.neoMotorElevatorB.setDesiredState(-0.5);
-    }
 
     public void stop() {
         this.NEOMotorIntake.stop();

@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.NEOMotorSubsysteam;
 
 public class ArmCmd extends CommandBase {
+
     public double speed;
     private static NEOMotorSubsysteam motorSubsysteam;
     public ArmCmd(NEOMotorSubsysteam subsysteam, double speed) {
