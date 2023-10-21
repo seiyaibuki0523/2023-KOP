@@ -49,8 +49,6 @@ public class RobotContainer {
                                 this.CIMSubsystem::stopModules, this.CIMSubsystem),
                         new WaitCommand(1)
                 ),
-
-                new WaitCommand(1.0),
                 new ParallelRaceGroup(
                         Commands.runEnd(() -> this.controlCmd.NeoQuadrupleRod(-0.6),
                                 this.CIMSubsystem::stopModules, this.CIMSubsystem),

@@ -17,10 +17,10 @@ public class ahrsCmd extends CommandBase {
     @Override
     public void execute() {
         while (pitch < 45.0) {
-            ahrsSubsysteam.move(0.3, 0.3);
+            ahrsSubsysteam.move(0.1, 0.1);
         }
         while (pitch < -45.0) {
-            ahrsSubsysteam.move(-0.3, -0.3);
+            ahrsSubsysteam.move(-0.1, -0.1);
         }
         while (pitch < 1.0 && pitch > 0.0) {
             ahrsSubsysteam.move(1, 0.5);
