@@ -9,6 +9,8 @@ public class ChassisSubsystem extends SubsystemBase {
     private final DifferentialDriveMotorGroup leftMotorGroup;
     private final DifferentialDriveMotorGroup rightMotorGroup;
 
+    private final AHRS ahrs = new AHRS(SerialPort.Port.kUSB);
+
     public ChassisSubsystem() {
         this.leftMotorGroup = new DifferentialDriveMotorGroup(
                 RobotMap.DrivePort.LEFT_MOTOR_A,
@@ -35,5 +37,11 @@ public class ChassisSubsystem extends SubsystemBase {
     public void stopModules() {
         this.leftMotorGroup.stop();
         this.rightMotorGroup.stop();
+    }
+
+    public double ahrs() {
+        ahrs.reset();
+        double pitch = ahrs.getPitch();
+        return pitch;
     }
 }

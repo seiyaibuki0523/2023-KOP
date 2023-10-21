@@ -1,16 +1,13 @@
 package frc.robot.commands;
 
-import com.kauailabs.navx.frc.AHRS;
-import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.SerialPort;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ChassisSubsystem;
 
 
 public class ahrsCmd extends CommandBase {
-    AHRS ahrs = new AHRS(I2C.Port.kMXP);
     ChassisSubsystem ahrsSubsysteam = new ChassisSubsystem();
-    double pitch = ahrs.getPitch();
+    double pitch = ahrsSubsysteam.ahrs();
 
     @Override
     public void initialize() {
@@ -22,10 +19,10 @@ public class ahrsCmd extends CommandBase {
         while (pitch < 45.0) {
             ahrsSubsysteam.move(0.3, 0.3);
         }
-        while (pitch > 45.0) {
+        while (pitch < -45.0) {
             ahrsSubsysteam.move(-0.3, -0.3);
         }
-        while (pitch == 0.0) {
+        while (pitch < 1.0 && pitch > 0.0) {
             ahrsSubsysteam.move(1, 0.5);
         }
     }
