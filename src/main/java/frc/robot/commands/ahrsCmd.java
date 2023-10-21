@@ -1,13 +1,14 @@
 package frc.robot.commands;
 
 import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ChassisSubsystem;
 
 
 public class ahrsCmd extends CommandBase {
-    AHRS ahrs = new AHRS(SerialPort.Port.kUSB);
+    AHRS ahrs = new AHRS(I2C.Port.kMXP);
     ChassisSubsystem ahrsSubsysteam = new ChassisSubsystem();
     double pitch = ahrs.getPitch();
 

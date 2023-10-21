@@ -7,12 +7,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.ArmCmd;
+import frc.robot.commands.ControlCmd;
 import frc.robot.commands.DriveJoystickCmd;
-import frc.robot.commands.IntakeCmd;
+import frc.robot.commands.ahrsCmd;
 import frc.robot.subsystems.ChassisSubsystem;
 import frc.robot.subsystems.NEOMotorSubsysteam;
-import frc.robot.commands.ControlCmd;
 
 public class RobotContainer {
     // The robot's subsystems and commands are defined here...
@@ -23,6 +22,7 @@ public class RobotContainer {
     private final GamepadJoystick driverJoystick1 = new GamepadJoystick(0);
     private final GamepadJoystick driverJoystick2 = new GamepadJoystick(1);
     private final ControlCmd controlCmd = new ControlCmd();
+    private final ahrsCmd ahrsCmd = new ahrsCmd();
 
     public RobotContainer() {
         // Configure the trigger bindings
@@ -45,14 +45,33 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         return new SequentialCommandGroup(
                 new ParallelRaceGroup(
-                        Commands.runEnd(() -> this.CIMSubsystem.move(0.6, 0.6), this.CIMSubsystem::stopModules, this.CIMSubsystem),
+                        Commands.runEnd(() -> this.CIMSubsystem.move(0.6, 0.6),
+                                this.CIMSubsystem::stopModules, this.CIMSubsystem),
                         new WaitCommand(1)
                 ),
 
                 new WaitCommand(1.0),
                 new ParallelRaceGroup(
-
-                )
+                        Commands.runEnd(() -> this.controlCmd.NeoQuadrupleRod(-0.6),
+                                this.CIMSubsystem::stopModules, this.CIMSubsystem),
+                        new WaitCommand(1)
+                ),
+                new ParallelRaceGroup(
+                        Commands.runEnd(() -> this.controlCmd.NeoIntake(-0.6),
+                                this.CIMSubsystem::stopModules, this.CIMSubsystem),
+                        new WaitCommand(1)
+                ),
+                new ParallelRaceGroup(
+                        Commands.runEnd(() -> this.controlCmd.NeoQuadrupleRod(0.6),
+                                this.CIMSubsystem::stopModules, this.CIMSubsystem),
+                        new WaitCommand(1)
+                ),
+                new ParallelRaceGroup(
+                        Commands.runEnd(() -> this.CIMSubsystem.move(0.6, 0.6),
+                                this.CIMSubsystem::stopModules, this.CIMSubsystem),
+                        new WaitCommand(1)
+                ),
+                new ahrsCmd()
         );
     }
 }
