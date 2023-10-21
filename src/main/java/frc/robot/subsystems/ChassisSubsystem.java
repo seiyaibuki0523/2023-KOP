@@ -23,6 +23,7 @@ public class ChassisSubsystem extends SubsystemBase {
                 RobotMap.DrivePort.RIGHT_MOTOR_B,
                 false, false
         );
+        ahrs.reset();
     }
 
     public void move(double leftSpeed, double rightSpeed) {
@@ -39,9 +40,7 @@ public class ChassisSubsystem extends SubsystemBase {
         this.rightMotorGroup.stop();
     }
 
-    public double ahrs() {
-        ahrs.reset();
-        double pitch = ahrs.getPitch();
-        return pitch;
+    public double getPitch() {
+        return ahrs.getPitch();
     }
 }

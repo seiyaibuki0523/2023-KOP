@@ -7,7 +7,7 @@ import frc.robot.subsystems.ChassisSubsystem;
 
 public class ahrsCmd extends CommandBase {
     ChassisSubsystem ahrsSubsysteam = new ChassisSubsystem();
-    double pitch = ahrsSubsysteam.ahrs();
+    double pitch = ahrsSubsysteam.getPitch();
 
     @Override
     public void initialize() {
