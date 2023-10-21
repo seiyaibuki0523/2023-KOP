@@ -35,7 +35,7 @@ public class NEOMotorSubsysteam extends SubsystemBase {
     }
 
     public void NeoQuadrupleRodBack(){
-        this.neoMotorQuadrupleRodA.setDesiredState(-0.5);
+        this.neoMotorQuadrupleRodA.setDesiredState(-e0.5);
         this.neoMotorQuadrupleRodB.setDesiredState(-0.5);
     }
 
