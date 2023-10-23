@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotMap;
+import frc.robot.constants.RobotMap;
 
 public class NEOMotorSubsysteam extends SubsystemBase {
     private final NEOMotorModule NEOMotorIntake;
@@ -12,12 +12,12 @@ public class NEOMotorSubsysteam extends SubsystemBase {
     private final NEOMotorModule neoMotorElevatorB;
 
     public NEOMotorSubsysteam() {
-        this.NEOMotorIntake = new NEOMotorModule(RobotMap.DrivePort.INTAKE_MOTOR, false);
-        this.NEOMotorArm = new NEOMotorModule(RobotMap.DrivePort.INTAKE_MOTOR, false);
-        this.neoMotorQuadrupleRodA = new NEOMotorModule(RobotMap.DrivePort.QUADRUPLE_ROD_A, false);
-        this.neoMotorQuadrupleRodB = new NEOMotorModule(RobotMap.DrivePort.QUADRUPLE_ROD_B, false);
-        this.neoMotorElevatorA = new NEOMotorModule(RobotMap.DrivePort.ELEVATOR_A, false);
-        this.neoMotorElevatorB = new NEOMotorModule(RobotMap.DrivePort.ELEVATOR_B, false);
+        this.NEOMotorIntake = new NEOMotorModule(RobotMap.MotorPort.INTAKE_MOTOR, false);
+        this.NEOMotorArm = new NEOMotorModule(RobotMap.MotorPort.INTAKE_MOTOR, false);
+        this.neoMotorQuadrupleRodA = new NEOMotorModule(RobotMap.MotorPort.QUADRUPLE_ROD_A, false);
+        this.neoMotorQuadrupleRodB = new NEOMotorModule(RobotMap.MotorPort.QUADRUPLE_ROD_B, false);
+        this.neoMotorElevatorA = new NEOMotorModule(RobotMap.MotorPort.ELEVATOR_A, false);
+        this.neoMotorElevatorB = new NEOMotorModule(RobotMap.MotorPort.ELEVATOR_B, false);
 
     }
 

@@ -4,32 +4,35 @@ import java.util.function.Supplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ChassisSubsystem;
 
-
-public class DriveJoystickCmd extends CommandBase{
-    private final ChassisSubsystem MotorSubsystem;
+public class DriveJoystickCommand extends CommandBase{
+    private final ChassisSubsystem chassisSubsystem;
     private final Supplier<Double> turnFunction, speedFunction;
-    public DriveJoystickCmd(ChassisSubsystem subsystem, Supplier<Double> turnFunction, Supplier<Double> speedFunction) {
-        this.MotorSubsystem = subsystem;
+
+
+    public DriveJoystickCommand(ChassisSubsystem subsystem, Supplier<Double> turnFunction,
+                                Supplier<Double> speedFunction) {
+        this.chassisSubsystem = subsystem;
         this.turnFunction = turnFunction;
         this.speedFunction = speedFunction;
-        this.addRequirements(this.MotorSubsystem);
+        this.addRequirements(this.chassisSubsystem);
     }
+
     @Override
     public void initialize() {}
 
     @Override
     public void execute() {
         // 1. Get real-time joystick inputs
-        double Speed = turnFunction.get();
-        double Speed2 = -speedFunction.get();
+        double Speed = this.turnFunction.get();
+        double Speed2 = -this.speedFunction.get();
         double L_Speed = Speed + Speed2;
         double R_Speed = Speed - Speed2;
-        MotorSubsystem.move(L_Speed,R_Speed);
+        this.chassisSubsystem.move(L_Speed, R_Speed);
     }
 
     @Override
     public void end(boolean interrupted) {
-        MotorSubsystem.stopModules();
+        this.chassisSubsystem.stopModules();
     }
 
     @Override
