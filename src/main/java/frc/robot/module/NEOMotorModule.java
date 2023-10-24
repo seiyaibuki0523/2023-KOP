@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+package frc.robot.module;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;

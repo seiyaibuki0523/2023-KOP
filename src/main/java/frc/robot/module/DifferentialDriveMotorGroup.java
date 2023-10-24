@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+package frc.robot.module;
 
 import frc.robot.Constants;
 import com.ctre.phoenix.motorcontrol.ControlMode;

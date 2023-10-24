@@ -4,6 +4,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.RobotMap;
 import edu.wpi.first.wpilibj.SerialPort;
+import frc.robot.module.DifferentialDriveMotorGroup;
 
 public class ChassisSubsystem extends SubsystemBase {
     private final DifferentialDriveMotorGroup leftMotorGroup;
