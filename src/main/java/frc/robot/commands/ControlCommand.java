@@ -7,21 +7,21 @@ import frc.robot.module.NEOMotorModule;
 import frc.robot.subsystems.TalonSrxSubsystem;
 
 public class ControlCommand extends CommandBase {
-    private final NEOMotorModule neoMotorQuadrupleRodA;
+    private final NEOMotorModule Arm;
     private final NEOMotorModule neoMotorQuadrupleRodB;
     private final NEOMotorModule neoMotorElevatorA;
     private final NEOMotorModule neoMotorElevatorB;
 
 
     public ControlCommand() {
-        this.neoMotorQuadrupleRodA = new NEOMotorModule(RobotMap.MotorPort.QUADRUPLE_ROD_A, false);
+        this.Arm = new NEOMotorModule(RobotMap.MotorPort.QUADRUPLE_ROD_A, false);
         this.neoMotorQuadrupleRodB = new NEOMotorModule(RobotMap.MotorPort.QUADRUPLE_ROD_B, false);
         this.neoMotorElevatorA = new NEOMotorModule(RobotMap.MotorPort.ELEVATOR_A, false);
         this.neoMotorElevatorB = new NEOMotorModule(RobotMap.MotorPort.ELEVATOR_B, false);
     }
 
-    public Command NeoQuadrupleRod(double speed) {
-        this.neoMotorQuadrupleRodA.setDesiredState(speed);
+    public Command Arm(double speed) {
+        this.Arm.setDesiredState(speed);
         this.neoMotorQuadrupleRodB.setDesiredState(speed);
         return null;
     }

@@ -23,8 +23,8 @@ public class RobotContainer {
     }
 
     private void configureBindings() {
-        new Trigger(this.driverJoystick2::getRightBumper).whileTrue(controlCommand.NeoQuadrupleRod(0.5));
-        new Trigger(this.driverJoystick2::getLeftBumper).whileTrue(controlCommand.NeoQuadrupleRod(-0.5));
+        new Trigger(this.driverJoystick2::getRightBumper).whileTrue(controlCommand.Arm(0.5));
+        new Trigger(this.driverJoystick2::getLeftBumper).whileTrue(controlCommand.Arm(-0.5));
         new Trigger(this.driverJoystick2::getXButtonPressed).whileTrue(controlCommand.Intake(0.5));
         new Trigger(this.driverJoystick2::getBButtonPressed).whileTrue(controlCommand.Intake(-0.5));
         new Trigger(this.driverJoystick2::getYButtonPressed).whileTrue(controlCommand.NeoElevator(0.5));
@@ -39,7 +39,7 @@ public class RobotContainer {
                         new WaitCommand(1.0)
                 ),
                 new ParallelRaceGroup(
-                        Commands.runEnd(() -> this.controlCommand.NeoQuadrupleRod(-0.6),
+                        Commands.runEnd(() -> this.controlCommand.Arm(-0.6),
                                 this.CIMSubsystem::stopModules, this.CIMSubsystem),
                         new WaitCommand(1.0)
                 ),
@@ -49,7 +49,7 @@ public class RobotContainer {
                         new WaitCommand(1.0)
                 ),
                 new ParallelRaceGroup(
-                        Commands.runEnd(() -> this.controlCommand.NeoQuadrupleRod(0.6),
+                        Commands.runEnd(() -> this.controlCommand.Arm(0.6),
                                 this.CIMSubsystem::stopModules, this.CIMSubsystem),
                         new WaitCommand(1.0)
                 ),
